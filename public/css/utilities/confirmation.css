@@ -406,7 +406,15 @@ article.confirmation-page {
 }
 
 @media print {
+    header {
+        display: none !important;
+    }
+
     article.confirmation-page {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+
         .confirmation-actions {
             display: none;
         }
@@ -415,5 +423,13 @@ article.confirmation-page {
             background-color: white;
             border: 2px solid var(--clr-primary);
         }
+    }
+
+    .confirmation-actions {
+        display: none !important;
+    }
+
+    footer {
+        display: none !important;
     }
 }

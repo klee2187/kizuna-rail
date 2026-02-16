@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <form class="booking-form" method="POST" action="/routes/book">
+    <form class="booking-form" method="POST" action="/train-routes/book">
         <input type="hidden" name="scheduleId" value="<%= schedule.id %>">
         <input type="hidden" name="routeId" value="<%= schedule.routeId %>">
 
@@ -34,6 +34,7 @@
                                     <div class="ticket-price">
                                         <span class="price-symbol">¥</span>
                                         <span class="price-amount"><%= Number(ticket.price).toLocaleString() %></span>
+                                        <span class="price-badge">($<%= yenToUsd(ticket.price).toFixed(2) %>)</span>
                                     </div>
                                 </div>
                                 
@@ -170,17 +171,18 @@
                 </div>
                 <div class="summary-row">
                     <span class="summary-label">Price per Ticket:</span>
-                    <span class="summary-value" id="pricePerTicket"><%= ticketOptions && ticketOptions[0] ? '¥' + Number(ticketOptions[0].price).toLocaleString() : '¥14,400' %></span>
+                    <span class="summary-value" id="pricePerTicket"><%= yenToUsd(ticketOptions && ticketOptions[0] ? ticketOptions[0].price : 14400).toFixed(2) %></span>
                 </div>
                 <div class="summary-row total">
                     <span class="summary-label">Total Amount:</span>
-                    <span class="summary-value" id="totalAmount"><%= ticketOptions && ticketOptions[0] ? '¥' + Number(ticketOptions[0].price).toLocaleString() : '¥14,400' %></span>
+                    <span class="summary-value" id="totalAmount"><%= yenToUsd(ticketOptions && ticketOptions[0] ? ticketOptions[0].price : 14400).toFixed(2) %></span>
+                    <span class="price-badge">($<%= yenToUsd(ticketOptions && ticketOptions[0] ? ticketOptions[0].price : 14400).toFixed(2) %>)</span>
                 </div>
             </div>
         </section>
 
         <div class="form-actions">
-            <a href="/routes/<%= schedule.routeId %>" class="btn btn-secondary">Cancel</a>
+            <a href="/train-routes/<%= schedule.routeId %>" class="btn btn-secondary">Cancel</a>
             <button type="submit" class="btn btn-primary">Confirm Booking</button>
         </div>
     </form>

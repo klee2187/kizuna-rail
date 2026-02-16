@@ -1,5 +1,5 @@
+import railRoutesRouter from '../controllers/train-routes/index.js';
 import challengeScenariosRouter from './scenarios.js';
-import railRoutesRouter from './routes.js';
 import { Router } from 'express';
 import { homePage, aboutPage, testErrorPage } from './index.js';
 
@@ -12,7 +12,7 @@ router.get('/', homePage);
 router.get('/about', aboutPage);
 
 // Rail routes
-router.use('/routes', railRoutesRouter);
+router.use('/train-routes', railRoutesRouter);
 
 // Challenge scenarios
 router.use('/scenarios', challengeScenariosRouter);

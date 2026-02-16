@@ -398,6 +398,7 @@ article.booking-page {
                             font-size: var(--font-size-xl);
                             font-weight: 700;
                             color: var(--clr-primary);
+                            text-align: right;
                         }
                     }
                 }

@@ -1,4 +1,5 @@
-import { createConfirmation, getScheduleById, getTicketOptionsForRoute } from '../models/model.js';
+import { createConfirmation, getScheduleById, getTicketOptionsForRoute } from '../../models/model.js';
+import { yenToUsd } from '../../includes/helpers.js';
 
 const bookingPage = async (req, res) => {
     const { scheduleId } = req.params;
@@ -7,10 +8,11 @@ const bookingPage = async (req, res) => {
 
     const ticketOptions = await getTicketOptionsForRoute(schedule.routeId, scheduleId);
 
-    res.render('routes/book', {
+    res.render('train-routes/book', {
         title: 'Book Trip',
         schedule,
-        ticketOptions
+        ticketOptions,
+        yenToUsd
     });
 };
 
@@ -19,7 +21,7 @@ const processBookingRequest = async (req, res) => {
 
     const confirmationNum = await createConfirmation(data);
 
-    res.redirect(`/routes/confirmation/${confirmationNum}`);
+    res.redirect(`/train-routes/confirmation/${confirmationNum}`);
 };
 
 export { bookingPage, processBookingRequest };

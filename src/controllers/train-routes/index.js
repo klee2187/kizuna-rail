@@ -9,6 +9,9 @@ const router = Router();
 // List all routes
 router.get('/', listRoutesPage);
 
+//Filter routes by region and season
+router.get('/filter', listRoutesPage);
+
 // Route details page
 router.get('/:routeId', routeDetailsPage);
 
